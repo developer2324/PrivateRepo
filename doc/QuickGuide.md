@@ -1,4 +1,4 @@
-# 《LiteOS入门指导》
+# 《Huawei LiteOS入门指导》
 
 ## 一：获取Huawei LiteOS源码
 
@@ -62,24 +62,24 @@ LiteOS入口在工程对应的main.c中
 - **LiteOS任务模块功能**
 		
 		- 任务的创建和删除
-		LOS_TaskCreateOnly	创建任务，并使该任务进入suspend状态，并不调度
-		LOS_TaskCreate	    创建任务，并使该任务进入ready状态，并调度
-		 LOS_TaskDelete	    删除指定的任务
+		LOS_TaskCreateOnly     创建任务，并使该任务进入suspend状态，并不调度
+		LOS_TaskCreate	       创建任务，并使该任务进入ready状态，并调度
+		 LOS_TaskDelete	       删除指定的任务
 
 		- 任务状态控制
-		LOS_TaskResume	    恢复挂起的任务
-		LOS_TaskSuspend	    挂起指定的任务
-		LOS_TaskDelay	    任务延时等待
-		LOS_TaskYield       显式放权，调整指定优先级的任务调度顺序
+		LOS_TaskResume	       恢复挂起的任务
+		LOS_TaskSuspend	       挂起指定的任务
+		LOS_TaskDelay	       任务延时等待
+		LOS_TaskYield          显式放权，调整指定优先级的任务调度顺序
 
 		- 任务调度的控制
-		LOS_TaskLock	    锁任务调度
-		LOS_TaskUnlock	    解锁任务调度
+		LOS_TaskLock	        锁任务调度
+		LOS_TaskUnlock	        解锁任务调度
 
 		- 任务优先级的控制
 		LOS_CurTaskPriSet	设置当前任务的优先级
-		LOS_TaskPriSet	    设置指定任务的优先级
-		LOS_TaskPriGet	    获取指定任务的优先级
+		LOS_TaskPriSet	        设置指定任务的优先级
+		LOS_TaskPriGet	        获取指定任务的优先级
 
 
 ## 四：熟悉Huawei LiteOS中断管理机制
@@ -121,12 +121,12 @@ LiteOS的中断模块支持中断初始化、创建、删除、开关恢复中�
 Huawei LiteOS的内存管理分为静态内存管理和动态内存管理，提供内存初始化、分配、释放等功能。
 
 	动态内存：在动态内存池中分配用户指定大小的内存块。
-	−	优点：按需分配。
-	−	缺点：内存池中可能出现碎片。
+	−优点：按需分配。
+	−缺点：内存池中可能出现碎片。
 
 	静态内存：在静态内存池中分配用户初始化时预设（固定）大小的内存块。
-	−	优点：分配和释放效率高，静态内存池中无碎片。
-	−	缺点：只能申请到初始化预设大小的内存块，不能按需申请。
+	−优点：分配和释放效率高，静态内存池中无碎片。
+	−缺点：只能申请到初始化预设大小的内存块，不能按需申请。
 
 
 - **LiteOS内存模块开发流程**
