@@ -1,8 +1,10 @@
-《LiteOS入门指导》
+# 《LiteOS入门指导》
 
 ## 一：获取Huawei LiteOS源码
 
-LiteOS开源代码放置在Github进行托管，路径为https://github.com/LiteOS/LiteOS，开发者在使用LiteOS前，需要将代码下载本地(选择Clone or download)
+LiteOS开源代码放置在Github进行托管，路径为https://github.com/LiteOS/LiteOS
+
+开发者在使用LiteOS前，需要将代码下载本地(选择Clone or download)
 
 - **了解Huawei LiteOS源代码目录结构**
 
@@ -136,7 +138,8 @@ Huawei LiteOS的内存管理分为静态内存管理和动态内存管理，提�
 		LOSCFG_BASE_MEM_NODE_INTEGRITY_CHECK：内存越界检测开关，默认关闭
 		
 		2.初始化内存池：
-		LOS_MemInit(VOID *pPool, UINT32  uwSize) // 该操作在系统初始化（los_config.c文件中完成）中由osMemSystemInit函数调用，开发者一般不需要修改。
+		LOS_MemInit(VOID *pPool, UINT32  uwSize) 
+		// 该操作在系统初始化（los_config.c文件中完成）中由osMemSystemInit函数调用，开发者一般不需要修改。
 		
 		3.申请动态内存：
 		 VOID *LOS_MemAlloc (VOID *pPool, UINT32  uwSize)；
