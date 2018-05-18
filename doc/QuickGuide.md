@@ -8,9 +8,9 @@ LiteOS开源代码放置在Github进行托管，路径为https://github.com/Lite
 
 - **了解Huawei LiteOS源代码目录结构**
 
-LiteOS源代码目录包括arch、components、doc、examples、kernle、targets等目录。
+LiteOS源代码目录包括arch、components、doc、examples、kernle、targets等目录
 
-详细介绍，请访问链接进一步了解
+详细介绍，请访问链接
 https://github.com/LiteOS/LiteOS/blob/master/doc/LiteOS_Code_Info.md
 
 ## 二：移植Huawei LiteOS到目标芯片（开发板）
@@ -23,17 +23,17 @@ https://github.com/LiteOS/LiteOS/blob/master/doc/LiteOS_Code_Info.md
 	
 3. 对于已经支持的CPU架构，建议参考doc目录下的移植文档进行移植；
 	
-4. 移植完成后，参考user目录下的main.c文件下的代码对内核进行测试，examples目录下全部测试用例成功后才证明移植成功。
+4. 移植完成后，参考user目录main.c文件下的代码对内核进行测试，examples目录下全部测试用例成功后才证明移植成功；
 	
-5. 已移植适配的开发板可以直接使用，具体请见LiteOS/targets/目录，例如STM32F103、STM32F429、STM32F746等开发板
+5. 已移植适配的开发板可以直接使用，具体请见LiteOS/targets/目录，例如STM32F103、STM32F429、STM32F746等开发板；
 
 - **移植常见步骤**
 
-1. 适配系统调度汇编（los_dispatch.s） ，主要修改函数LOS_StartToRun、LOS_IntLock、LOS_IntUnLock、TaskSwitch等；
+1. 适配系统调度汇编（los_dispatch.s），主要修改函数LOS_StartToRun、LOS_IntLock、LOS_IntUnLock、TaskSwitch等；
 	
 2. 根据芯片设置系统相关参数，包括时钟频率，tick中断配置，los_config.h系统参数配置（内存池大小、信号量、队列、互斥锁、软件定时器数量等）；
 	
-3. 适配中断管理模块 ，LiteOS的中断向量表由m_pstHwiForm[OS_VECTOR_CNT]数组管理，需要根据芯片配置中断使能，重定向等；
+3. 适配中断管理模块，LiteOS的中断向量表由m_pstHwiForm[OS_VECTOR_CNT]数组管理，需要根据芯片配置中断使能，重定向等；
 
 4. 适配系统log函数，方便OS问题追踪，修改los_printf.h文件，将系统的PRINT_INFO等函数映射到硬件串口；
 
@@ -43,11 +43,11 @@ https://github.com/LiteOS/LiteOS/blob/master/doc/LiteOS_Code_Info.md
 
 LiteOS入口在工程对应的main.c中
 
-1. 首先进行硬件初始化 HardWare_Init();
+1. 首先进行硬件初始化 HardWare_Init()；
 
-2. 初始化LiteOS内核 LOS_KernelInit();
+2. 初始化LiteOS内核 LOS_KernelInit()；
 
-3. 初始化内核例程 LOS_Inspect_Entry();
+3. 初始化内核例程 LOS_Inspect_Entry()；
 
 4. 最后调用LOS_Start();开始task调度，LiteOS开始正常工作;
 
@@ -57,26 +57,26 @@ LiteOS入口在工程对应的main.c中
 	
 2. 配置任务参数（堆栈、优先级，入口函数等）；
 	
-3. 在调用LOS_Start函数前调用LOS_TaskCreate函数创建任务。
+3. 在调用LOS_Start函数前调用LOS_TaskCreate函数创建任务;
 
 - **LiteOS任务模块功能**
 		
-		- 任务的创建和删除
-		LOS_TaskCreateOnly     创建任务，并使该任务进入suspend状态，并不调度
-		LOS_TaskCreate	       创建任务，并使该任务进入ready状态，并调度
-		 LOS_TaskDelete	       删除指定的任务
+		任务的创建和删除
+		LOS_TaskCreateOnly     创建任务，并使该任务进入suspend状态，并不调度
+		LOS_TaskCreate         创建任务，并使该任务进入ready状态，并调度
+		 LOS_TaskDelete        删除指定的任务
 
-		- 任务状态控制
-		LOS_TaskResume	       恢复挂起的任务
+		任务状态控制
+		LOS_TaskResume	       恢复挂起的任务
 		LOS_TaskSuspend	       挂起指定的任务
 		LOS_TaskDelay	       任务延时等待
 		LOS_TaskYield          显式放权，调整指定优先级的任务调度顺序
 
-		- 任务调度的控制
-		LOS_TaskLock	        锁任务调度
+		任务调度的控制
+		LOS_TaskLock	        锁任务调度
 		LOS_TaskUnlock	        解锁任务调度
 
-		- 任务优先级的控制
+		任务优先级的控制
 		LOS_CurTaskPriSet	设置当前任务的优先级
 		LOS_TaskPriSet	        设置指定任务的优先级
 		LOS_TaskPriGet	        获取指定任务的优先级
